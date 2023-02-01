@@ -50,10 +50,10 @@ const LOAD_MODEL_FROM_BUNDLE = true;
 
 export default function RenderPose() {
     const cameraRef = useRef(null);
-    const [tfReady, setTfReady] = useState(false);
+    const [tfReady, setTfReady] = useState<boolean>(false);
     const [model, setModel] = useState<posedetection.PoseDetector>();
     const [poses, setPoses] = useState<posedetection.Pose[]>();
-    const [fps, setFps] = useState(0);
+    const [fps, setFps] = useState<number>(0);
     const [orientation, setOrientation] = useState<ScreenOrientation.Orientation>();
     const [cameraType, setCameraType] = useState<CameraType>(CameraType.front);
     // Use `useRef` so that changing it won't trigger a re-render.

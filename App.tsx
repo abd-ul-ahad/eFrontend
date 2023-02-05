@@ -5,7 +5,7 @@ import RenderPose from "./Components/RenderPose";
 
 export default function App() {
   return (
-    <View>
+    <View className="">
       <RenderPose />
     </View>
   );

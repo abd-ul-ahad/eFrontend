@@ -1,1 +1,1 @@
-# react-native-pose-detection
+# Frontend

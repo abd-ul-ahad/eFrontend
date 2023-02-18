@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Person() {
   return (
-    <View className="flex-1 justify-center items-center bg-slate-600">
+    <View className="flex-1 justify-center items-center bg-slate-100">
       <Text>Person</Text>
     </View>
   );

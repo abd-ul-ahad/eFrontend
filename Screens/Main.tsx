@@ -10,16 +10,22 @@ import Cart from "../Components/Cart";
 import Home from "../Components/Home";
 import Person from "../Components/Person";
 import Search from "../Components/Search";
-import { default as Ionicons } from "react-native-vector-icons/Ionicons";
-import { default as FeatherIcon } from "react-native-vector-icons/Feather";
 import { SwiperFlatList } from "react-native-swiper-flatlist";
+import { default as Ionicons } from "react-native-vector-icons/Ionicons";
 
 export default function Main() {
   const swiperRef = useRef<any>();
+  const [index, setIndex] = useState<number>(0);
 
   return (
     <View className="flex-1 justify-center items-center">
-      <SwiperFlatList renderAll={true} index={0} ref={swiperRef}>
+      <SwiperFlatList
+        renderAll={true}
+        onChangeIndex={(i) => {
+          setIndex(i["index"]);
+        }}
+        ref={swiperRef}
+      >
         <View style={styles.child}>
           <Home />
         </View>
@@ -44,7 +50,11 @@ export default function Main() {
           }}
           className="w-1/4 py-3 flex justify-center items-center"
         >
-          <Ionicons name="home-outline" size={30} color="#000" />
+          <Ionicons
+            name={index == 0 ? "home" : "home-outline"}
+            size={25}
+            color="#000"
+          />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
@@ -52,15 +62,23 @@ export default function Main() {
           }}
           className="w-1/4 py-3 flex justify-center items-center"
         >
-          <Ionicons name="search-outline" size={30} color="#000" />
+          <Ionicons
+            name={index == 1 ? "md-search-sharp" : "search-outline"}
+            size={25}
+            color="#000"
+          />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             swiperRef.current.scrollToIndex({ animated: true, index: 2 });
           }}
-          className="w-1/4 py-3 flex justify-center items-center"
+          className="w-1/4 relative py-3 flex justify-center items-center"
         >
-          <FeatherIcon name="shopping-bag" size={30} color="#000" />
+          <Ionicons
+            name={index == 2 ? "md-cart-sharp" : "cart-outline"}
+            size={25}
+            color="#000"
+          />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
@@ -68,7 +86,11 @@ export default function Main() {
           }}
           className="w-1/4 py-3 flex justify-center items-center"
         >
-          <Ionicons name="person-outline" size={30} color="#000" />
+          <Ionicons
+            name={index == 3 ? "md-person-sharp" : "person-outline"}
+            size={25}
+            color="#000"
+          />
         </TouchableOpacity>
       </View>
     </View>

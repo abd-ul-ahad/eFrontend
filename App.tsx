@@ -4,7 +4,7 @@ import Main from "./Screens/Main";
 
 export default function App() {
   return (
-    <View className="flex-1 justify-center items-center">
+    <View className="flex-1 mt-7 justify-center items-center">
       <Main />
     </View>
   );

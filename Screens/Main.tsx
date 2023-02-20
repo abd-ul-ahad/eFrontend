@@ -17,6 +17,19 @@ export default function Main() {
   const swiperRef = useRef<any>();
   const [index, setIndex] = useState<number>(0);
 
+  const notActive = [
+    "home-outline",
+    "search-outline",
+    "cart-outline",
+    "person-outline",
+  ];
+  const activeIcon = [
+    "home",
+    "md-search-sharp",
+    "md-cart-sharp",
+    "md-person-sharp",
+  ];
+
   return (
     <View className="flex-1 justify-center items-center">
       <SwiperFlatList
@@ -44,54 +57,23 @@ export default function Main() {
         className="flex-1 flex-row justify-center items-center  absolute bottom-1 w-full bg-white"
         style={{ borderRadius: 20 }}
       >
-        <TouchableOpacity
-          onPress={() => {
-            swiperRef.current.scrollToIndex({ animated: true, index: 0 });
-          }}
-          className="w-1/4 py-3 flex justify-center items-center"
-        >
-          <Ionicons
-            name={index == 0 ? "home" : "home-outline"}
-            size={25}
-            color="#000"
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            swiperRef.current.scrollToIndex({ animated: true, index: 1 });
-          }}
-          className="w-1/4 py-3 flex justify-center items-center"
-        >
-          <Ionicons
-            name={index == 1 ? "md-search-sharp" : "search-outline"}
-            size={25}
-            color="#000"
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            swiperRef.current.scrollToIndex({ animated: true, index: 2 });
-          }}
-          className="w-1/4 relative py-3 flex justify-center items-center"
-        >
-          <Ionicons
-            name={index == 2 ? "md-cart-sharp" : "cart-outline"}
-            size={25}
-            color="#000"
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            swiperRef.current.scrollToIndex({ animated: true, index: 3 });
-          }}
-          className="w-1/4 py-3 flex justify-center items-center"
-        >
-          <Ionicons
-            name={index == 3 ? "md-person-sharp" : "person-outline"}
-            size={25}
-            color="#000"
-          />
-        </TouchableOpacity>
+        {notActive.map((e, i) => {
+          return (
+            <TouchableOpacity
+              key={i}
+              onPress={() => {
+                swiperRef.current.scrollToIndex({ animated: true, index: i });
+              }}
+              className="w-1/4 py-3 flex justify-center items-center"
+            >
+              <Ionicons
+                name={index == i ? activeIcon[i] : e}
+                size={25}
+                color="#000"
+              />
+            </TouchableOpacity>
+          );
+        })}
       </View>
     </View>
   );

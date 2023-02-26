@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import {
   StyleSheet,
   Text,
@@ -30,6 +30,8 @@ export default function Main() {
     "md-person-sharp",
   ];
 
+  const _components = [<Home />, <Search />, <Cart />, <Person />];
+
   return (
     <View className="flex-1 justify-center items-center">
       <SwiperFlatList
@@ -39,18 +41,13 @@ export default function Main() {
         }}
         ref={swiperRef}
       >
-        <View style={styles.child}>
-          <Home />
-        </View>
-        <View style={styles.child}>
-          <Search />
-        </View>
-        <View style={styles.child}>
-          <Cart />
-        </View>
-        <View style={styles.child}>
-          <Person />
-        </View>
+        {_components.map((e, i) => {
+          return (
+            <View key={i} style={styles.child}>
+              {e}
+            </View>
+          );
+        })}
       </SwiperFlatList>
 
       <View
